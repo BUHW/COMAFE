@@ -1,42 +1,153 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+:root {
+  --primary: #073e71;
+  --secondary: #073e71;
+  --tertiary: #2e2e2ebe;
+  --white: #fff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+a {
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+}
+
+.btn-secondary {
+  color: var(--primary) !important;
+}
+
+form {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 20px;
+}
+
+.form-row {
+  display: flex;
+  margin: 32px 0;
+}
+
+.form-row .input-data {
+  width: 100%;
+  height: 40px;
+  margin: 0 20px;
+  position: relative;
+}
+
+.form-row .input-data-radio {
+  display: flex;
+  margin: 0 20px;
+  gap: 20px;
+  text-transform: uppercase;
+}
+
+.form-row .input-data-select {
+  width: 100%;
+  margin: 0 20px;
+}
+
+.form-row .input-data-radio label {
+  margin-left: 5px;
+}
+
+form .form-row .textarea {
+  height: 70px;
+}
+
+.input-data input,
+.textarea textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 17px;
+  outline: none;
+}
+
+.input-data input:focus~label,
+.textarea textarea:focus~label,
+.input-data input:valid~label,
+.textarea textarea:valid~label {
+  transform: translateY(-25px);
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.textarea textarea {
+  resize: none;
+  padding-top: 10px;
+}
+
+.input-data label {
+  position: absolute;
+  pointer-events: none;
+  bottom: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.textarea label {
+  width: 100%;
+  bottom: 40px;
+  background: var(--white);
+}
+
+.input-data .underline {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.input-data .underline:before {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.input-data input:focus~.underline:before,
+.input-data input:valid~.underline:before,
+.textarea textarea:focus~.underline:before,
+.textarea textarea:valid~.underline:before {
+  transform: scale(1);
+}
+
+.MuiOutlinedInput-notchedOutline span {
+  padding-left: 15px !important;
+}
+
+@media (max-width: 700px) {
+  .container .text {
+    font-size: 30px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .container form {
+    padding: 10px 0 0 0;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .container form .form-row {
+    display: block;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  form .form-row .input-data {
+    margin: 35px 0 !important;
+  }
 
-.read-the-docs {
-  color: #888;
+  .submit-btn .input-data {
+    width: 40% !important;
+  }
 }

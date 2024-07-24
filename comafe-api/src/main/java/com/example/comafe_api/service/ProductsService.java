@@ -15,6 +15,7 @@ import java.util.UUID;
 public class ProductsService implements ProductsInterface {
 
     private final ProductsRepository productsRepository;
+    private String baseURL = "/home/sd_victor_antonio/Área de trabalho/RepositoriosGit/COMAFE/comafe-api/src/main/resources/static/img/img-produtos/";
 
     public ProductsService(ProductsRepository productsRepository) {
         this.productsRepository = productsRepository;
@@ -32,15 +33,14 @@ public class ProductsService implements ProductsInterface {
 
     @Override
     public Products create(Products products) {
-        try {
-            if(products.getImg() != null) {
-                String imgUrl = UploadUtil.saveBase64Image(products.getImg());
-                products.setImg(imgUrl);
+        if (products.getImg() != null) {
+            boolean uploadSuccess = UploadUtil.fazerUploadImagem(products.getImg());
+            if (uploadSuccess) {
+                products.setImgUrl(baseURL + products.getImg().getOriginalFilename());
+                products.setImgName(products.getImg().getOriginalFilename());
             }
-            return productsRepository.save(products);
-        } catch (Exception e) {
-            throw new ProductsNotFoundException();
         }
+        return productsRepository.save(products);
     }
 
     @Override
@@ -49,15 +49,29 @@ public class ProductsService implements ProductsInterface {
                 .orElseThrow(ProductsNotFoundException::new);
 
         productsUpdate.setTitle(products.getTitle());
-        productsUpdate.setImg(products.getImg());
         productsUpdate.setDescription(products.getDescription());
         productsUpdate.setPrice(products.getPrice());
+
+        if (products.getImg() != null) {
+            boolean uploadSuccess = UploadUtil.fazerUploadImagem(products.getImg());
+            if (uploadSuccess) {
+                productsUpdate.setImgUrl(baseURL + products.getImg().getOriginalFilename());
+                productsUpdate.setImgName(products.getImg().getOriginalFilename());
+            }
+        }
 
         return productsRepository.save(productsUpdate);
     }
 
     @Override
     public void delete(UUID id) {
+        Products product = productsRepository.findById(id)
+                .orElseThrow(ProductsNotFoundException::new);
+
+        if (product.getImgUrl() != null) {
+            UploadUtil.deletarImagem(product.getImgUrl());
+        }
+
         productsRepository.deleteById(id);
     }
 }

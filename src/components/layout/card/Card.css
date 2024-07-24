@@ -1,0 +1,60 @@
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 1390px;
+    padding: 0 20px;
+}
+
+.card-cadproduct {
+    display: flex;
+    align-items: center;
+    max-width: 1390px;
+    justify-content: end;
+    margin: 0 auto;
+    padding: 20px 20px 0px 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    border-radius: 4px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 0;
+    position: relative;
+}
+
+.card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0px;
+    gap: 5px;
+}
+
+.card .image-container img {
+    width: 250px;
+    height: 200px;
+    border-radius: 8px 8px 0 0;
+}
+
+.menu-overlay {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .card-container {
+        justify-content: center;
+    }
+}

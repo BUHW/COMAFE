@@ -1,0 +1,15 @@
+.menuBar {
+    background-color: var(--primary) !important;
+}
+
+.menuBar img {
+    width: auto;
+    height: 50px;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .menuBar img{
+        display: none;
+    }
+}

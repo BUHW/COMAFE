@@ -1,0 +1,22 @@
+.form-ctt {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 500px;
+}
+
+.MuiDialog-paper {
+    max-width: none;
+}
+
+@media screen and (max-width: 490px) {
+    .form-ctt {
+        min-width: 300px;
+    }
+
+    .form-ctt .form-row {
+        padding: 0;
+        margin: 0;
+    }
+    
+}

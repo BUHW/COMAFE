@@ -1,4 +1,6 @@
 package com.example.comafe_api.domain.products;
 
-public record ProductsRequestDTO(String title, String img, String description, Double price) {
+import org.springframework.web.multipart.MultipartFile;
+
+public record ProductsRequestDTO(String title, MultipartFile img, String description, Double price) {
 }
