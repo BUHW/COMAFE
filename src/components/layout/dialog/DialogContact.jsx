@@ -103,7 +103,7 @@ export default function ScrollDialog({ open, handleClose }) {
                                     label="Mensagem"
                                     name='mensagem'
                                     variant="standard"
-                                    rows={4}
+                                    multiline
                                     fullWidth
                                     required
                                     value={contact.mensagem}
@@ -115,8 +115,8 @@ export default function ScrollDialog({ open, handleClose }) {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Cancelar</Button>
-                <Button onClick={submit}>Enviar</Button>
+                <Button onClick={handleClose} className='btn-secondary' >Cancelar</Button>
+                <Button variant='contained' className='btn-primary' onClick={submit}>Enviar</Button>
             </DialogActions>
         </Dialog>
     );

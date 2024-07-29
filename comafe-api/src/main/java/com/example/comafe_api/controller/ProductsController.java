@@ -48,7 +48,7 @@ public class ProductsController {
                 createdProduct.getId(),
                 createdProduct.getTitle(),
                 createdProduct.getImgUrl(),
-                createdProduct.getImgName(), // Novo campo
+                createdProduct.getImgName(),
                 createdProduct.getDescription(),
                 createdProduct.getPrice());
     }

@@ -6,7 +6,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu({ options, handleDelete }) {
+export default function LongMenu({ options, handleDelete, handleEdit }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,7 +20,7 @@ export default function LongMenu({ options, handleDelete }) {
     handleClose();
     switch (option) {
         case 'Editar':
-            console.log('Editar');
+            handleEdit();
             break;
         case 'Excluir':
             handleDelete();

@@ -34,10 +34,11 @@ public class ProductsService implements ProductsInterface {
     @Override
     public Products create(Products products) {
         if (products.getImg() != null) {
-            boolean uploadSuccess = UploadUtil.fazerUploadImagem(products.getImg());
+            String nomeArquivoUnico = UUID.randomUUID().toString() + getFileExtension(products.getImg().getOriginalFilename());
+            boolean uploadSuccess = UploadUtil.fazerUploadImagem(products.getImg(), nomeArquivoUnico);
             if (uploadSuccess) {
-                products.setImgUrl(baseURL + products.getImg().getOriginalFilename());
-                products.setImgName(products.getImg().getOriginalFilename());
+                products.setImgUrl(baseURL + nomeArquivoUnico);
+                products.setImgName(nomeArquivoUnico);
             }
         }
         return productsRepository.save(products);
@@ -53,10 +54,11 @@ public class ProductsService implements ProductsInterface {
         productsUpdate.setPrice(products.getPrice());
 
         if (products.getImg() != null) {
-            boolean uploadSuccess = UploadUtil.fazerUploadImagem(products.getImg());
+            String nomeArquivoUnico = UUID.randomUUID().toString() + getFileExtension(products.getImg().getOriginalFilename());
+            boolean uploadSuccess = UploadUtil.fazerUploadImagem(products.getImg(), nomeArquivoUnico);
             if (uploadSuccess) {
-                productsUpdate.setImgUrl(baseURL + products.getImg().getOriginalFilename());
-                productsUpdate.setImgName(products.getImg().getOriginalFilename());
+                productsUpdate.setImgUrl(baseURL + nomeArquivoUnico);
+                productsUpdate.setImgName(nomeArquivoUnico);
             }
         }
 
@@ -74,4 +76,9 @@ public class ProductsService implements ProductsInterface {
 
         productsRepository.deleteById(id);
     }
+
+    private String getFileExtension(String fileName) {
+        return fileName.substring(fileName.lastIndexOf("."));
+    }
 }
+

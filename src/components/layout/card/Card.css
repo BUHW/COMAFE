@@ -1,20 +1,19 @@
 .card-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
+    margin: 0 auto !important;
     gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 2rem !important;
     margin-bottom: 2rem;
-    max-width: 1390px;
+    max-width: 80%;
     padding: 0 20px;
+    flex-wrap: nowrap !important;
 }
 
 .card-cadproduct {
     display: flex;
     align-items: center;
-    max-width: 1390px;
+    max-width: 80%;
     justify-content: end;
     margin: 0 auto;
     padding: 20px 20px 0px 20px;
@@ -27,7 +26,7 @@
     justify-content: center;
     width: 250px;
     border-radius: 4px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
     padding: 0;
     position: relative;
 }
@@ -56,5 +55,10 @@
 @media screen and (max-width: 768px) {
     .card-container {
         justify-content: center;
+        max-width: 90%;
+    }
+
+    .card {
+        width: 100%;
     }
 }

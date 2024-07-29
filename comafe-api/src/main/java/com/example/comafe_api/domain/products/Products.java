@@ -35,7 +35,7 @@ public class Products {
     private String description;
 
     @Column
-    private Double price;
+    private String price;
 
     @Transient
     @JsonIgnore
